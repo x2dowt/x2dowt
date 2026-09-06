@@ -874,6 +874,26 @@
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 </script>
+<!-- REMOEV below here -->
+  <!-- Place this right before your closing </body> tag -->
+<div class="corner-sprite">
+  <img src="path-to-your-sprite.gif" alt="Animated mascot" />
+</div>
+<style>
+  .corner-sprite {
+    position: fixed;
+    bottom: 20px;  /* Distance from bottom */
+    right: 20px;   /* Distance from right (change to 'left' for bottom-left) */
+    z-index: 9999; /* Keeps it on top of other content */
+    pointer-events: none; /* Prevents it from blocking clicks on elements beneath it */
+  }
 
+  .corner-sprite img {
+    width: 80px;  /* Set your sprite's display size */
+    height: auto;
+    image-rendering: pixelated; /* Keeps pixel art sharp (remove if smooth art) */
+  }
+</style>
+  <!-- close --> 
 </body>
 </html>
