@@ -150,7 +150,6 @@
   }
   .sidebar.expanded .about-panel{display:block;}
 
-  /* transparent logo container */
   .badge-photo{
     position:relative;
     width:100%;
@@ -163,9 +162,10 @@
     display:flex;align-items:center;justify-content:center;
   }
   .badge-photo .logo-mark{
-    width: 60%;
-    height: auto;
-    opacity: 0.85;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
   } 
  
   .nametag{
@@ -216,18 +216,26 @@
   /* ---------- main column ---------- */
   .main{flex:1 1 auto;min-width:0;}
 
+  /* tabs anchored directly to the content surface */
   .tab-row{
+    position:absolute;
+    left:16px;
+    top:-37px;
     display:flex;
     gap:6px;
-    margin:0 0 -3px 16px;
+    z-index:5;
   }
   .tab{
     position:relative;
     top:7px;
+    height:40px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     border:3px solid var(--ink);
     border-bottom:none;
     border-radius:12px 12px 0 0;
-    padding:.6rem 1.3rem;
+    padding:0 1.3rem;
     font-weight:700;
     font-size:.88rem;
     letter-spacing:.02em;
@@ -248,11 +256,13 @@
   }
 
   .content-surface{
+    position:relative;
     background:var(--grid-bg);
     border:var(--border);
     border-radius:20px;
     box-shadow:7px 7px 0 var(--ink);
     padding:28px 26px;
+    margin-top:37px;
   }
 
   .page{display:none;}
@@ -392,7 +402,7 @@
   .project-card p{font-size:.9rem;color:var(--muted-dark);margin-bottom:14px;}
   .project-card .actions{display:flex;gap:10px;flex-wrap:wrap;}
 
-  /* cv page */
+  /* experience page */
   .timeline{position:relative;padding-left:28px;}
   .timeline::before{
     content:"";
@@ -417,136 +427,109 @@
   }
   .tl-item h3{font-size:1.15rem;color:var(--ink);}
   .tl-item .org{font-size:.9rem;font-weight:600;color:var(--muted-dark);margin-bottom:6px;}
-  .tl-item p{font-size:.92rem;color:var(--muted-dark);max-width:60ch;}
+  .tl-item p{font-size:.92rem;color:var(--muted-dark);max-width:60ch;margin:0 0 6px;}
+  .tl-item ul{margin:6px 0 0;padding-left:1.2rem;}
+  .tl-item li{font-size:.92rem;color:var(--muted-dark);margin-bottom:4px;}
+
+  /* project detail — blog-style layout */
+  .back-link{
+    display:inline-block;
+    font-weight:700;font-size:.88rem;
+    text-decoration:none;color:var(--muted-dark);
+    margin-bottom:14px;
+    cursor:pointer;
+  }
+  #page-project-detail{max-width:68ch;}
+  #page-project-detail h1{font-size:clamp(2rem,5vw,3rem);margin:8px 0 6px;}
+  .pd-meta{color:var(--muted-dark);font-size:.92rem;margin:0 0 20px;}
+  .pd-hero{
+    aspect-ratio:16/9;
+    border:var(--border);
+    border-radius:14px;
+    box-shadow:6px 6px 0 var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:24px;
+    background:var(--blue);
+  }
+  .pd-hero span{
+    font-family:'Baloo 2',sans-serif;font-weight:800;
+    font-size:clamp(1.6rem,5vw,2.6rem);color:#fff;letter-spacing:1px;
+  }
+  .pd-body h2{font-size:1.35rem;margin:28px 0 10px;}
+  .pd-body p{font-size:1rem;color:var(--ink);margin:0 0 16px;}
+  .pd-body ul{margin:0 0 20px;padding-left:1.2rem;}
+  .pd-body li{font-size:.96rem;margin-bottom:6px;}
+  .pd-body .at-a-glance{
+    background:var(--paper);
+    border:var(--border);
+    border-radius:14px;
+    box-shadow:5px 5px 0 var(--ink);
+    padding:16px 20px;
+    margin:8px 0 24px;
+  }
+  .pd-body .at-a-glance h2{margin-top:0;}
 
   /* mobile */
   @media (max-width:820px) {
-  .app {
-    flex-direction: column;
-    padding: 12px 10px 40px;
-  }
-
-  .sidebar {
-    flex-basis: auto;
-    width: 100%;
-    position: static;
-  }
-
-  .sidebar-toggle {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 18px 14px;
-  }
-
-  .name-tag {
-    writing-mode: horizontal-tb;
-    transform: none;
-    font-size: 1.3rem;
-  }
-
-  .sidebar.expanded .name-tag {
-    display: inline;
-  }
-
-  .sidebar-toggle .chevron {
-    display: inline-block;
-    font-size: 1.8rem;
-    font-weight: 800;
-    line-height: 1;
-  }
-
-  .lanyard-clip {
-    top: 6px;
-  }
-
-  /* Full mobile expanded panel display */
-  .sidebar.expanded .about-panel {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 16px;
-  }
-
-  .sidebar.expanded .about-panel p.bio,
-  .sidebar.expanded .about-panel .divider,
-  .sidebar.expanded .about-panel .socials {
-    display: block !important;
-  }
-
-  .socials {
-    display: flex !important;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .badge-photo {
-    aspect-ratio: 16/10;
-  }
-
-  .home-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card .thumb {
-    border-right: none;
-    border-bottom: var(--border);
-    aspect-ratio: 16/9;
-  }
-
-  .main {
-    width: 100%;
-  }
-
-  .tab-row {
-    width: 100%;
-    margin-left: 0;
-    padding-left: 0;
-  }
-
-  .content-surface {
-    padding: 20px 14px;
-    border-radius: 14px;
-  }
-}
- /*   
-  @media (max-width:820px){
-    .app{flex-direction:column;padding:16px 14px 50px;}
-    .sidebar{
-      flex-basis:auto;width:100%;
-      position:static;
+    .app {
+      flex-direction: column;
+      padding: 12px 10px 40px;
     }
-    .sidebar-toggle{flex-direction:row;justify-content:space-between;padding:18px 18px 14px;}
-    .name-tag{writing-mode:horizontal-tb;transform:none;font-size:1.3rem;}
-    .sidebar.expanded .name-tag{display:inline;}
-    .sidebar-toggle .chevron{display:inline;}
-    .lanyard-clip{top:6px;}
-    .badge-photo{aspect-ratio:16/10;}
-    .home-grid{grid-template-columns:1fr;}
-    .project-card{grid-template-columns:1fr;}
-    .project-card .thumb{border-right:none;border-bottom:var(--border);aspect-ratio:16/9;}
-    .main{width:100%;}
-    .tab-row{width:100%;overflow-x:auto;margin-left:6px;}
-    .content-surface{padding:20px 18px;}
-  }
-*/
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important;}
-  }
-  /* new here ***** */
-  @media (max-width: 820px) {
-    /* Fixed Tab Alignment */
-    .tab-row {
+
+    .sidebar {
+      flex-basis: auto;
       width: 100%;
-      margin-left: 0 !important;
-      padding-left: 0 !important;
+      position: static;
+      overflow: visible;
     }
 
-    /* Fixed Image Cropping */
+    .sidebar-toggle {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 18px 14px;
+    }
+
+    .name-tag {
+      writing-mode: horizontal-tb;
+      transform: none;
+      font-size: 1.3rem;
+    }
+
+    .sidebar.expanded .name-tag {
+      display: inline;
+    }
+
+    .sidebar-toggle .chevron {
+      display: inline-block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .lanyard-clip {
+      top: 6px;
+    }
+
+    .sidebar.expanded .about-panel {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 16px;
+    }
+
+    .sidebar.expanded .about-panel p.bio,
+    .sidebar.expanded .about-panel .divider,
+    .sidebar.expanded .about-panel .socials {
+      display: block !important;
+    }
+
+    .socials {
+      display: flex !important;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .badge-photo {
       aspect-ratio: 4/3;
     }
@@ -557,6 +540,45 @@
       object-fit: contain;
       object-position: center;
     }
+
+    .home-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-card {
+      grid-template-columns: 1fr;
+    }
+
+    .project-card .thumb {
+      border-right: none;
+      border-bottom: var(--border);
+      aspect-ratio: 16/9;
+    }
+
+    .main {
+      width: 100%;
+    }
+
+    .tab-row {
+      width: 100%;
+      left: 0 !important;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    .tab {
+      padding: 0 1rem;
+      font-size: .8rem;
+    }
+
+    .content-surface {
+      padding: 20px 14px;
+      border-radius: 14px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
   }
 </style>
 </head>
@@ -573,13 +595,7 @@
     </button>
     <div class="about-panel">
       <div class="badge-photo">
-        <!-- Transparent Logo SVG Placeholder -->
-        <!-- <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="42" stroke="#0e0e0e" stroke-width="6" fill="none"/>
-          <path d="M30 35 L50 65 L70 35" stroke="#0e0e0e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg> --> 
-          <img class="logo-mark" src="images/profile.png" alt="Ellen Kim Logo" style="width: 100%; height: 100%; object-fit: cover; opacity: 1;">
-
+        <img class="logo-mark" src="images/profile.png" alt="Ellen Kim Logo">
         <div class="nametag">
           <span class="hi">X2DOWT</span>
           <span class="name">aka Ellen</span>
@@ -606,21 +622,18 @@
 
   <!-- MAIN -->
   <main class="main">
-    <nav class="tab-row" id="tabbar">
-      <button class="tab active" data-page="home">HOME</button>
-      <button class="tab" data-page="projects">PROJECTS</button>
-      <button class="tab" data-page="cv">CV</button>
-    </nav>
-
     <div class="content-surface">
+      <nav class="tab-row" id="tabbar">
+        <button class="tab active" data-page="home">HOME</button>
+        <button class="tab" data-page="projects">PROJECTS</button>
+        <button class="tab" data-page="experience">EXPERIENCE</button>
+      </nav>
 
     <!-- HOME -->
     <section class="page active" id="page-home">
       <div class="hero">
         <span class="badge">✦ currently studying...</span>
         <h1>PORTFOLIO</h1>
-        <h1 class="hero-title-img">
-      </h1>
         <p class="lead">Illustrations, designS, or other things...</p>
       </div>
 
@@ -633,7 +646,7 @@
           <div class="preview-body">
             <h3>insert project 1 name</h3>
             <p>insert project 1 description</p>
-            <button class="btn btn-blue" onclick="showPage('projects')">View project</button>
+            <button class="btn btn-blue" onclick="openProject('nightwave')">View project</button>
           </div>
         </div>
 
@@ -668,7 +681,7 @@
             <h3>Nightwave — live visualizer</h3>
             <p>Real-time audio-reactive visuals for late-night radio, tuned to run on modest hardware.</p>
             <div class="actions">
-              <a class="btn btn-tan" href="#" onclick="return false;">View</a>
+              <a class="btn btn-tan" href="#" onclick="openProject('nightwave');return false;">View</a>
               <a class="btn btn-brown" href="https://github.com/x2dowt" target="_blank">GitHub</a>
             </div>
           </div>
@@ -681,7 +694,7 @@
             <h3>Fern &amp; Co — plant shop identity</h3>
             <p>Full identity system for a neighborhood plant shop: mark, packaging, and a set of hand-drawn botanical icons.</p>
             <div class="actions">
-              <a class="btn btn-tan" href="#" onclick="return false;">View</a>
+              <a class="btn btn-tan" href="#" onclick="openProject('fern');return false;">View</a>
               <a class="btn btn-brown" href="#" onclick="return false;">Case study</a>
             </div>
           </div>
@@ -694,7 +707,7 @@
             <h3>Fieldnote — trip planning tool</h3>
             <p>Collaborative itinerary builder for small group trips, with an offline-first mobile view.</p>
             <div class="actions">
-              <a class="btn btn-tan" href="#" onclick="return false;">View</a>
+              <a class="btn btn-tan" href="#" onclick="openProject('fieldnote');return false;">View</a>
               <a class="btn btn-brown" href="https://github.com/x2dowt" target="_blank">GitHub</a>
             </div>
           </div>
@@ -703,12 +716,12 @@
       </div>
     </section>
 
-    <!-- CV -->
-    <section class="page" id="page-cv">
+    <!-- EXPERIENCE -->
+    <section class="page" id="page-experience">
       <div class="hero cv-header-action" style="margin-bottom:20px;">
         <div>
-          <h1 style="font-size:clamp(2rem,5vw,2.8rem);">CV</h1>
-          <p class="lead">me until now yo</p>
+          <h1 style="font-size:clamp(2rem,5vw,2.8rem);">EXPERIENCE</h1>
+          <p class="lead">My academic &amp; professional background</p>
         </div>
         <a class="btn btn-tan" href="resume.pdf" download target="_blank">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -718,11 +731,48 @@
 
       <div class="timeline">
         <div class="tl-item">
-          <span class="tl-date">2026 — present</span>
-          <h3>Honors Student</h3>
-          <div class="org">University of Alberta</div>
-          <p>Focusing on honors research coursework, interface design, and computational projects.</p>
+          <span class="tl-date">Sep 2026 – Present · 1 mo</span>
+          <h3>AI Career Accelerator Program Participant</h3>
+          <div class="org">Amii (Alberta Machine Intelligence Institute)</div>
+          <p>Selected undergraduate participant for Amii's AI Career Accelerator Program (AICAP).</p>
         </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Apr 2026 – Present · 6 mos</span>
+          <h3>Undergraduate Honors Research Student</h3>
+          <div class="org">University of Alberta — Faculty of Computing Science &amp; Psychology</div>
+          <p>Supervisor: Dr. Erin Grant</p>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Apr 2026 – Present · 6 mos</span>
+          <h3>Vice President Administration</h3>
+          <div class="org">Undergraduate Association of Computing Science</div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Jul 2023 – Aug 2023 · 2 mos</span>
+          <h3>Research Assistant</h3>
+          <div class="org">University of Alberta · Internship (On-site)</div>
+          <ul>
+            <li>Used Java and GameMaker Studio 2 to develop desktop game application as a learning aid on congenital heart conditions.</li>
+            <li>Developed and designed game narrative, visual assets – storyboards, artwork and gameplay elements.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT DETAIL (blog-style) -->
+    <section class="page" id="page-project-detail">
+      <a class="back-link" href="#" onclick="showPage('projects');return false;">← Back to projects</a>
+      <span class="tag-chip" id="pd-tag"></span>
+      <h1 id="pd-title"></h1>
+      <p class="pd-meta" id="pd-meta"></p>
+      <div class="pd-hero" id="pd-hero"><span id="pd-hero-title"></span></div>
+      <div class="pd-body" id="pd-body"></div>
+      <div class="actions" style="margin-top:8px;">
+        <a class="btn btn-tan" id="pd-visit" href="#" onclick="return false;">Visit live</a>
+        <a class="btn btn-brown" id="pd-github" href="https://github.com/x2dowt" target="_blank">GitHub</a>
       </div>
     </section>
 
@@ -744,7 +794,7 @@
   function showPage(name){
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
-    tabs.forEach(t => t.dataset.page === name ? t.classList.add('active') : t.classList.remove('active'));
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.page === name));
   }
   tabs.forEach(tab => tab.addEventListener('click', () => showPage(tab.dataset.page)));
 
@@ -762,6 +812,67 @@
       });
     });
   });
+
+  // blog-style project detail pages
+  const projectData = {
+    nightwave: {
+      title: "Nightwave — live visualizer",
+      tag: "Website",
+      meta: "Personal project — 2026",
+      heroColor: "var(--blue)",
+      intro: "A browser-based audio visualizer built for a friend's late-night radio show. It reads the live audio stream and turns it into responsive shapes and color washes, tuned to run smoothly even on a decade-old laptop.",
+      challenge: "Most visualizer tools assume decent hardware and a stable local audio file. This needed to run in a browser tab, alongside a streaming setup, on whatever machine happened to be at the studio that night.",
+      approach: "I built a lightweight canvas renderer with a hard frame-rate budget, then layered in a companion overlay so streamers could drop it straight into OBS as a browser source.",
+      details: ["Role: Design & front-end build", "Timeline: 6 weeks", "Tools: Canvas API, Web Audio API, OBS overlay", "Tags: Website"],
+      closing: "Nightwave has been running weekly for the show since launch, with a small community of listeners requesting new color themes each month."
+    },
+    fern: {
+      title: "Fern & Co — plant shop identity",
+      tag: "Illustrations",
+      meta: "Brand identity — 2025",
+      heroColor: "var(--orange)",
+      intro: "A full identity system for a neighborhood plant shop: wordmark, packaging, signage, and a set of hand-drawn botanical icons used across the store and its packaging.",
+      challenge: "The shop wanted to feel more considered than a typical houseplant chain, without tipping into anything precious or unapproachable.",
+      approach: "I built the mark around a single confident line-drawing style, then extended it into a small icon library so every plant care tag and shelf label feels part of the same family.",
+      details: ["Role: Brand identity, illustration", "Timeline: 8 weeks", "Tools: Illustrator, Procreate", "Tags: Illustrations"],
+      closing: "The system now covers packaging, care cards, and the shop's storefront signage."
+    },
+    fieldnote: {
+      title: "Fieldnote — trip planning tool",
+      tag: "Website",
+      meta: "Product design — 2024",
+      heroColor: "var(--tan)",
+      intro: "A collaborative itinerary builder for small group trips, built with an offline-first mobile view so plans stay usable without signal.",
+      challenge: "Group trip planning usually lives across five chat threads and a spreadsheet nobody updates. We wanted one shared source of truth that still worked mid-hike with no service.",
+      approach: "I designed a day-by-day itinerary view with local-first storage that syncs when a connection is available, so the plan never disappears at the worst moment.",
+      details: ["Role: Product design, UX research", "Timeline: 12 weeks", "Tools: Figma, Framer, offline-first architecture", "Tags: Website"],
+      closing: "Fieldnote has since been used to plan trips for groups of up to fourteen people."
+    }
+  };
+
+  function openProject(id){
+    const p = projectData[id];
+    if(!p) return;
+    document.getElementById('pd-tag').textContent = p.tag;
+    document.getElementById('pd-title').textContent = p.title;
+    document.getElementById('pd-meta').textContent = p.meta;
+    const hero = document.getElementById('pd-hero');
+    hero.style.background = p.heroColor;
+    document.getElementById('pd-hero-title').textContent = p.title.split(' — ')[0].toUpperCase();
+    document.getElementById('pd-body').innerHTML =
+      '<p>' + p.intro + '</p>' +
+      '<h2>The challenge</h2><p>' + p.challenge + '</p>' +
+      '<h2>The approach</h2><p>' + p.approach + '</p>' +
+      '<div class="at-a-glance"><h2>At a glance</h2><ul>' +
+        p.details.map(d => '<li>' + d + '</li>').join('') +
+      '</ul></div>' +
+      '<p>' + p.closing + '</p>';
+
+    document.querySelectorAll('.page').forEach(pg => pg.classList.remove('active'));
+    document.getElementById('page-project-detail').classList.add('active');
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.page === 'projects'));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
 </script>
 
 </body>
