@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nightwave — Ellen Kim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0e0e;
+    --blue-dark:#1b2d59;
+    --blue:#5d83d8;
+    --blue-light:#b2c8f8;
+    --brown:#7a4321;
+    --orange:#e8792f;
+    --tan:#f0b860;
+    --offwhite:#f2ead6;
+    --paper:#fffdf6;
+    --muted-dark:#5b5646;
+    --radius:16px;
+    --border:3px solid var(--ink);
+    --grid-bg:
+      linear-gradient(rgba(93,131,216,.18) 1px, transparent 1px) 0 0/32px 32px,
+      linear-gradient(90deg, rgba(93,131,216,.18) 1px, transparent 1px) 0 0/32px 32px,
+      var(--offwhite);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh;
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--ink);
+    background: linear-gradient(135deg, #5d83d8 0%, #1b2d59 100%);
+    padding:28px 20px 60px;
+  }
+  .blog-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--grid-bg);
+    border: var(--border);
+    border-radius: 20px;
+    box-shadow: 7px 7px 0 var(--ink);
+    padding: 32px;
+  }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--tan); border: var(--border);
+    border-radius: 10px; padding: .5rem 1rem;
+    font-weight: 700; text-decoration: none;
+    box-shadow: 4px 4px 0 var(--ink);
+    margin-bottom: 24px;
+  }
+  .post-header { margin-bottom: 24px; }
+  .post-header h1 { font-family: 'Baloo 2', sans-serif; font-size: 2.5rem; margin-top: 8px; }
+  .post-meta { font-size: 0.85rem; font-weight: 600; color: var(--muted-dark); }
+  
+  /* Blog Gallery & Notes Grid */
+  .blog-section {
+    display: flex; flex-direction: column; gap: 24px; margin-top: 24px;
+  }
+  .blog-card {
+    background: var(--paper); border: var(--border);
+    border-radius: var(--radius); box-shadow: 5px 5px 0 var(--ink);
+    padding: 20px; overflow: hidden;
+  }
+  .blog-card img {
+    width: 100%; height: auto; border: var(--border);
+    border-radius: 10px; display: block; margin-bottom: 12px;
+  }
+  .blog-card .note {
+    font-size: 0.95rem; line-height: 1.6; color: var(--ink);
+  }
+  .note-label {
+    display: inline-block; background: var(--orange);
+    border: 2px solid var(--ink); border-radius: 6px;
+    padding: 2px 8px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="blog-container">
+  <a href="index.html" class="back-btn">← Back to Portfolio</a>
+
+  <div class="post-header">
+    <span class="note-label">Case Study / Notes</span>
+    <h1>Nightwave — Live Visualizer</h1>
+    <div class="post-meta">Posted on September 2026 • Web Design & Audio</div>
+  </div>
+
+  <div class="blog-section">
+    <!-- Image + Note Entry 1 -->
+    <div class="blog-card">
+      <img src="images/nightwave.png" alt="Initial Concept Sketch">
+      <span class="note-label">Process Note 01</span>
+      <p class="note">Initial stage exploration. I wanted to experiment with custom audio reactive shaders running directly inside the browser canvas while keeping frame rates consistent.</p>
+    </div>
+
+    <!-- Image + Note Entry 2 -->
+    <div class="blog-card">
+      <img src="images/placeholder.png" alt="UI Variations">
+      <span class="note-label">Process Note 02</span>
+      <p class="note">Refining color palettes. I tested high-contrast retro tones to give it an old-school display vibe without making the screen too distracting for late-night viewing.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
